@@ -1,10 +1,10 @@
-package fuzzy
+package hotfuzz
 
-func swapArrays(arr1 []int, arr2 []int) ([]int, []int) {
+func swapIntArrays(arr1 []int, arr2 []int) ([]int, []int) {
 	return arr2, arr1
 }
 
-func LevenstheinDistance(s []rune, t []rune) int{
+func LevenstheinDistance(s []rune, t []rune) int {
 	// extract lengths
 	m := len(s)
 	n := len(t)
@@ -30,7 +30,7 @@ func LevenstheinDistance(s []rune, t []rune) int{
 			}
 			v1[j+1] = min(deletionCost, insertionCost, substitutionCost)
 		}
-		v0, v1 = swapArrays(v0,v1)
+		v0, v1 = swapIntArrays(v0, v1)
 	}
 	return v0[n]
 }
