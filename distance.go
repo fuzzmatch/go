@@ -1,9 +1,5 @@
 package hotfuzz
 
-func swapIntArrays(arr1 []int, arr2 []int) ([]int, []int) {
-	return arr2, arr1
-}
-
 func LevenstheinDistance(s []rune, t []rune) int {
 	// extract lengths
 	m := len(s)

@@ -1,20 +1,8 @@
 package hotfuzz
 
 import (
-	"reflect"
 	"testing"
 )
-
-func TestSwapIntArrays(t *testing.T) {
-	arr1 := []int{1}
-	arr2 := []int{2}
-	arr1_swapped, arr2_swapped := swapIntArrays(arr1, arr2)
-
-	// Compare arrays using reflect.DeepEqual
-	if !reflect.DeepEqual(arr1_swapped, []int{2}) || !reflect.DeepEqual(arr2_swapped, []int{1}) {
-		t.Error("Expected arr1_swapped = [2] and arr2_swapped = [1], but got", arr1_swapped, arr2_swapped)
-	}
-}
 
 func TestLevenshteinDistance(t *testing.T) {
 	type testCase struct {
