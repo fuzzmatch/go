@@ -1,4 +1,4 @@
-package hotfuzz
+package fuzzmatch
 
 import (
 	"testing"

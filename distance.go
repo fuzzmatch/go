@@ -1,4 +1,4 @@
-package hotfuzz
+package fuzzmatch
 
 func LevenstheinDistance(s []rune, t []rune) int {
 	// extract lengths

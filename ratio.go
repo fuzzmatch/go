@@ -1,6 +1,6 @@
 // contains all ratios from https://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
 
-package hotfuzz
+package fuzzmatch
 
 import (
 	"strings"
