@@ -28,8 +28,8 @@ func TestSwapRuneArrays(t *testing.T) {
 }
 
 func TestCaseInsensitiveSort(t *testing.T) {
-	input_arr := []string{"Apple", "Cat", "banana", "cat", "apple", "Banana"}
-	expected_sorted := []string{"Apple", "apple", "Banana", "banana", "Cat", "cat"}
+	input_arr := []string{"Apple", "Apple", "Cat", "banana", "cat", "apple", "Banana"}
+	expected_sorted := []string{"Apple", "Apple", "apple", "Banana", "banana", "Cat", "cat"}
 	sorted := caseInsensitiveSort(input_arr)
 
 	// Compare arrays

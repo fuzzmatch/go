@@ -4,6 +4,8 @@ package fuzzmatch
 
 import (
 	"strings"
+
+	set "github.com/fuzzmatch/set"
 )
 
 type distanceFunction func([]rune, []rune) int
@@ -79,4 +81,49 @@ func tokenSortRatio(query string, choice string, delimeter string, metric distan
 	return (totalLength - distance) / totalLength
 }
 
-// Token Set
+func tokenSetRatio(query string, choice string, delimeter string, metric distanceFunction, caseSensitive bool) float32 {
+	if !caseSensitive {
+		query = strings.ToLower(query)
+		choice = strings.ToLower(choice)
+	}
+
+	// Tokenize query and choice
+	query_tokens_slice := strings.Split(query, delimeter)
+	query_tokens_set := set.FromSlice(query_tokens_slice)
+
+	choice_tokens_slice := strings.Split(choice, delimeter)
+	choice_tokens_set := set.FromSlice(choice_tokens_slice)
+
+	// Get Intersection
+	intersection_tokens_set := query_tokens_set.Intersection(choice_tokens_set)
+
+	// Get Slices again
+	query_tokens_slice = caseInsensitiveSort(query_tokens_set.Elements())
+	choice_tokens_slice = caseInsensitiveSort(choice_tokens_set.Elements())
+	intersection_tokens_slice := caseInsensitiveSort(intersection_tokens_set.Elements())
+
+	// recombine into a single string
+	query_tokens_string := strings.Join(query_tokens_slice, " ")
+	choice_tokens_string := strings.Join(choice_tokens_slice, " ")
+	intersection_tokens_string := strings.Join(intersection_tokens_slice, " ")
+
+	// convert s and t to rune array
+	query_tokens_runes := []rune(query_tokens_string)
+	choice_tokens_runes := []rune(choice_tokens_string)
+	intersection_tokens_runes := []rune(intersection_tokens_string)
+
+	// Compare Different Pairs
+	distance := float32(metric(intersection_tokens_runes, query_tokens_runes))
+	totalLength := float32(len(intersection_tokens_runes) + len(query_tokens_runes))
+	r0 := (totalLength - distance) / totalLength
+
+	distance = float32(metric(intersection_tokens_runes, choice_tokens_runes))
+	totalLength = float32(len(intersection_tokens_runes) + len(choice_tokens_runes))
+	r1 := (totalLength - distance) / totalLength
+
+	distance = float32(metric(query_tokens_runes, choice_tokens_runes))
+	totalLength = float32(len(query_tokens_runes) + len(choice_tokens_runes))
+	r2 := (totalLength - distance) / totalLength
+
+	return max(r0, r1, r2)
+}
