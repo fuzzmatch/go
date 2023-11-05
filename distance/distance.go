@@ -1,4 +1,6 @@
-package fuzzmatch
+package distance
+
+import "github.com/fuzzmatch/go/utils"
 
 func LevenstheinDistance(s []rune, t []rune) int {
 	// extract lengths
@@ -26,7 +28,7 @@ func LevenstheinDistance(s []rune, t []rune) int {
 			}
 			v1[j+1] = min(deletionCost, insertionCost, substitutionCost)
 		}
-		v0, v1 = swapIntArrays(v0, v1)
+		v0, v1 = utils.SwapIntArrays(v0, v1)
 	}
 	return v0[n]
 }

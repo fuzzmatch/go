@@ -1,4 +1,4 @@
-module github.com/jacob-jameson/hotfuzz
+module github.com/fuzzmatch/go
 
 go 1.21.3
 

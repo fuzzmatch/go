@@ -1,4 +1,4 @@
-package fuzzmatch
+package utils
 
 import (
 	"reflect"
@@ -8,7 +8,7 @@ import (
 func TestSwapIntArrays(t *testing.T) {
 	arr1 := []int{1}
 	arr2 := []int{2}
-	arr1_swapped, arr2_swapped := swapIntArrays(arr1, arr2)
+	arr1_swapped, arr2_swapped := SwapIntArrays(arr1, arr2)
 
 	// Compare arrays using reflect.DeepEqual
 	if !reflect.DeepEqual(arr1_swapped, []int{2}) || !reflect.DeepEqual(arr2_swapped, []int{1}) {
@@ -19,7 +19,7 @@ func TestSwapIntArrays(t *testing.T) {
 func TestSwapRuneArrays(t *testing.T) {
 	arr1 := []rune{'a'}
 	arr2 := []rune{'b'}
-	arr1_swapped, arr2_swapped := swapRuneArrays(arr1, arr2)
+	arr1_swapped, arr2_swapped := SwapRuneArrays(arr1, arr2)
 
 	// Compare arrays using reflect.DeepEqual
 	if !reflect.DeepEqual(arr1_swapped, []rune{'b'}) || !reflect.DeepEqual(arr2_swapped, []rune{'a'}) {
@@ -30,7 +30,7 @@ func TestSwapRuneArrays(t *testing.T) {
 func TestCaseInsensitiveSort(t *testing.T) {
 	input_arr := []string{"Apple", "Apple", "Cat", "banana", "cat", "apple", "Banana"}
 	expected_sorted := []string{"Apple", "Apple", "apple", "Banana", "banana", "Cat", "cat"}
-	sorted := caseInsensitiveSort(input_arr)
+	sorted := CaseInsensitiveSort(input_arr)
 
 	// Compare arrays
 	if !reflect.DeepEqual(expected_sorted, sorted) {

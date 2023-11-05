@@ -1,4 +1,4 @@
-package fuzzmatch
+package distance
 
 import (
 	"testing"

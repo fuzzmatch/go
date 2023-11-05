@@ -1,4 +1,4 @@
-package fuzzmatch
+package utils
 
 import (
 	"sort"
@@ -6,15 +6,15 @@ import (
 	"unicode/utf8"
 )
 
-func swapRuneArrays(arr1 []rune, arr2 []rune) ([]rune, []rune) {
+func SwapRuneArrays(arr1 []rune, arr2 []rune) ([]rune, []rune) {
 	return arr2, arr1
 }
 
-func swapIntArrays(arr1 []int, arr2 []int) ([]int, []int) {
+func SwapIntArrays(arr1 []int, arr2 []int) ([]int, []int) {
 	return arr2, arr1
 }
 
-func lessCaseInsensitive(s string, t string) bool {
+func LessCaseInsensitive(s string, t string) bool {
 	for {
 		if len(t) == 0 {
 			return false
@@ -46,7 +46,7 @@ func lessCaseInsensitive(s string, t string) bool {
 	}
 }
 
-func caseInsensitiveSort(data []string) []string {
-	sort.Slice(data, func(i, j int) bool { return lessCaseInsensitive(data[i], data[j]) })
+func CaseInsensitiveSort(data []string) []string {
+	sort.Slice(data, func(i, j int) bool { return LessCaseInsensitive(data[i], data[j]) })
 	return data
 }
