@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestLevenshteinDistance(t *testing.T) {
+func TestLevenshtein(t *testing.T) {
 	type testCase struct {
 		query    string
 		choice   string
@@ -23,13 +23,43 @@ func TestLevenshteinDistance(t *testing.T) {
 	for _, test := range tests {
 		query_array := []rune(test.query)
 		choice_array := []rune(test.choice)
-		distance := LevenstheinDistance(query_array, choice_array)
+		distance := Levenshtein(query_array, choice_array)
 		if distance != test.distance {
 			t.Error(
 				"For ", test.query,
 				" and ", test.choice,
-				" expected LevenshteinDistance = ", test.distance,
-				", got LevenshteinDistance = ", distance,
+				" expected Levenshtein = ", test.distance,
+				", got Levenshtein = ", distance,
+			)
+		}
+	}
+}
+
+func TestHamming(t *testing.T) {
+	type testCase struct {
+		query    string
+		choice   string
+		distance int
+	}
+
+	var tests = []testCase{
+		{"test", "test", 0}, // should be equal
+		{"test", "best", 1},
+		{"test", "tost", 1},
+		{"Test", "test", 1}, // should be case sensitive
+		{"test", "tets", 2}, // transposition should count as two edits
+	}
+
+	for _, test := range tests {
+		query_array := []rune(test.query)
+		choice_array := []rune(test.choice)
+		distance := Hamming(query_array, choice_array)
+		if distance != test.distance {
+			t.Error(
+				"For ", test.query,
+				" and ", test.choice,
+				" expected Levenshtein = ", test.distance,
+				", got Levenshtein = ", distance,
 			)
 		}
 	}

@@ -6,7 +6,7 @@ import (
 	"github.com/fuzzmatch/go/distance"
 )
 
-func TestCaseSensitiveSimpleRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseSensitiveSimpleRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -23,7 +23,7 @@ func TestCaseSensitiveSimpleRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := SimpleRatio(test.query, test.choice, distance.LevenstheinDistance, true)
+		score := SimpleRatio(test.query, test.choice, distance.Levenshtein, true)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,
@@ -35,7 +35,7 @@ func TestCaseSensitiveSimpleRatioWithLevenshteinDistance(t *testing.T) {
 	}
 }
 
-func TestCaseInsensitiveSimpleRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseInsensitiveSimpleRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -52,7 +52,7 @@ func TestCaseInsensitiveSimpleRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := SimpleRatio(test.query, test.choice, distance.LevenstheinDistance, false)
+		score := SimpleRatio(test.query, test.choice, distance.Levenshtein, false)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,
@@ -64,7 +64,7 @@ func TestCaseInsensitiveSimpleRatioWithLevenshteinDistance(t *testing.T) {
 	}
 }
 
-func TestCaseSensitivePartialRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseSensitivePartialRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -81,7 +81,7 @@ func TestCaseSensitivePartialRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := PartialRatio(test.query, test.choice, distance.LevenstheinDistance, true)
+		score := PartialRatio(test.query, test.choice, distance.Levenshtein, true)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,
@@ -93,7 +93,7 @@ func TestCaseSensitivePartialRatioWithLevenshteinDistance(t *testing.T) {
 	}
 }
 
-func TestCaseInsensitivePartialRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseInsensitivePartialRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -110,7 +110,7 @@ func TestCaseInsensitivePartialRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := PartialRatio(test.query, test.choice, distance.LevenstheinDistance, false)
+		score := PartialRatio(test.query, test.choice, distance.Levenshtein, false)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,
@@ -122,7 +122,7 @@ func TestCaseInsensitivePartialRatioWithLevenshteinDistance(t *testing.T) {
 	}
 }
 
-func TestCaseSensitiveTokenSortRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseSensitiveTokenSortRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -142,7 +142,7 @@ func TestCaseSensitiveTokenSortRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := TokenSortRatio(test.query, test.choice, " ", distance.LevenstheinDistance, true)
+		score := TokenSortRatio(test.query, test.choice, " ", distance.Levenshtein, true)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,
@@ -154,7 +154,7 @@ func TestCaseSensitiveTokenSortRatioWithLevenshteinDistance(t *testing.T) {
 	}
 }
 
-func TestCaseInsensitiveTokenSortRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseInsensitiveTokenSortRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -175,7 +175,7 @@ func TestCaseInsensitiveTokenSortRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := TokenSortRatio(test.query, test.choice, " ", distance.LevenstheinDistance, false)
+		score := TokenSortRatio(test.query, test.choice, " ", distance.Levenshtein, false)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,
@@ -187,7 +187,7 @@ func TestCaseInsensitiveTokenSortRatioWithLevenshteinDistance(t *testing.T) {
 	}
 }
 
-func TestCaseSensitiveTokenSetRatioWithLevenshteinDistance(t *testing.T) {
+func TestCaseSensitiveTokenSetRatioWithLevenshtein(t *testing.T) {
 	type testCase struct {
 		query  string
 		choice string
@@ -209,7 +209,7 @@ func TestCaseSensitiveTokenSetRatioWithLevenshteinDistance(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		score := TokenSetRatio(test.query, test.choice, " ", distance.LevenstheinDistance, true)
+		score := TokenSetRatio(test.query, test.choice, " ", distance.Levenshtein, true)
 		if score != test.score {
 			t.Error(
 				"For ", test.query,

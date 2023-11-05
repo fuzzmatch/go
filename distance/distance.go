@@ -1,8 +1,10 @@
 package distance
 
-import "github.com/fuzzmatch/go/utils"
+import (
+	"github.com/fuzzmatch/go/utils"
+)
 
-func LevenstheinDistance(s []rune, t []rune) int {
+func Levenshtein(s []rune, t []rune) int {
 	// extract lengths
 	m := len(s)
 	n := len(t)
@@ -31,4 +33,19 @@ func LevenstheinDistance(s []rune, t []rune) int {
 		v0, v1 = utils.SwapIntArrays(v0, v1)
 	}
 	return v0[n]
+}
+
+func Hamming(s []rune, t []rune) int {
+
+	if len(s) != len(t) {
+		panic("rune arrays must be the same length when using the Hamming Distance")
+	}
+
+	distance := 0
+	for i := range s {
+		if s[i] != t[i] {
+			distance++
+		}
+	}
+	return distance
 }
