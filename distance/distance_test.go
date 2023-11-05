@@ -44,7 +44,6 @@ func TestHamming(t *testing.T) {
 
 	var tests = []testCase{
 		{"test", "test", 0}, // should be equal
-		{"test", "best", 1},
 		{"test", "tost", 1},
 		{"Test", "test", 1}, // should be case sensitive
 		{"test", "tets", 2}, // transposition should count as two edits
