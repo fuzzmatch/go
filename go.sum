@@ -4,3 +4,5 @@ github.com/fuzzmatch/set v0.0.0-20231104022333-2b97317a423c h1:7VyUaVxZYipzWNbPc
 github.com/fuzzmatch/set v0.0.0-20231104022333-2b97317a423c/go.mod h1:UnNrBr/C2gjaxQtHBLXR2JgdDT7TdaydiXrGACnFKJA=
 github.com/fuzzmatch/set v1.0.0 h1:8FEpYUhOCvEACTfXl8Oi1/Wk/+CxzXeys6dbuaXgLOQ=
 github.com/fuzzmatch/set v1.0.0/go.mod h1:UnNrBr/C2gjaxQtHBLXR2JgdDT7TdaydiXrGACnFKJA=
+github.com/hbollon/go-edlib v1.6.0 h1:ga7AwwVIvP8mHm9GsPueC0d71cfRU/52hmPJ7Tprv4E=
+github.com/hbollon/go-edlib v1.6.0/go.mod h1:wnt6o6EIVEzUfgbUZY7BerzQ2uvzp354qmS2xaLkrhM=

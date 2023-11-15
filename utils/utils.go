@@ -50,3 +50,11 @@ func CaseInsensitiveSort(data []string) []string {
 	sort.Slice(data, func(i, j int) bool { return LessCaseInsensitive(data[i], data[j]) })
 	return data
 }
+
+func Make2DArray(M int, N int) [][]int {
+	A := make([][]int, M)
+	for m := 0; m < M; m++ {
+		A[m] = make([]int, N)
+	}
+	return A
+}

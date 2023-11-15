@@ -4,6 +4,21 @@ import (
 	"github.com/fuzzmatch/go/utils"
 )
 
+func Hamming(s []rune, t []rune) int {
+
+	if len(s) != len(t) {
+		panic("rune arrays must be the same length when using the Hamming Distance")
+	}
+
+	distance := 0
+	for i := range s {
+		if s[i] != t[i] {
+			distance++
+		}
+	}
+	return distance
+}
+
 func Levenshtein(s []rune, t []rune) int {
 	// extract lengths
 	m := len(s)
@@ -35,17 +50,32 @@ func Levenshtein(s []rune, t []rune) int {
 	return v0[n]
 }
 
-func Hamming(s []rune, t []rune) int {
+func OptimalStringAlignment(s []rune, t []rune) int {
+	matrix := utils.Make2DArray(len(s)+1, len(t)+1)
 
-	if len(s) != len(t) {
-		panic("rune arrays must be the same length when using the Hamming Distance")
+	for i := 0; i <= len(s); i++ {
+		matrix[i][0] = i
 	}
 
-	distance := 0
-	for i := range s {
-		if s[i] != t[i] {
-			distance++
+	for j := 0; j <= len(t); j++ {
+		matrix[0][j] = j
+	}
+
+	var count int
+	for i := 1; i <= len(s); i++ {
+		matrix[i][0] = i
+		for j := 1; j <= len(t); j++ {
+			if s[i-1] == t[j-1] {
+				count = 0
+			} else {
+				count = 1
+			}
+
+			matrix[i][j] = min(min(matrix[i-1][j]+1, matrix[i][j-1]+1), matrix[i-1][j-1]+count) // insertion, deletion, substitution
+			if i > 1 && j > 1 && s[i-1] == t[j-2] && s[i-2] == t[j-1] {
+				matrix[i][j] = min(matrix[i][j], matrix[i-2][j-2]+1) // translation
+			}
 		}
 	}
-	return distance
+	return matrix[len(s)][len(t)]
 }
