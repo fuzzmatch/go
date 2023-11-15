@@ -46,7 +46,7 @@ func TestLevenshtein(t *testing.T) {
 		{"best", "test", 1},  // 1 substitution
 		{"Test", "test", 1},  // 1 Capital substitution
 		{"test", "tets", 2},  // transposition counts as 2 edits
-		// {"test", "test", 0},  // should be equal
+		{"test", "test", 0},  // should be equal
 	}
 
 	for _, test := range tests {
